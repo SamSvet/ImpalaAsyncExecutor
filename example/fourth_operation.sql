@@ -1,0 +1,1 @@
+create table if not exists my_schema.target_table4 as select * from my_schema.source_table1

@@ -1,0 +1,1 @@
+drop table if exists my_schema.target_table3 purge

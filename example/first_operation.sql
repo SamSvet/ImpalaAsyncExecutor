@@ -1,0 +1,1 @@
+insert overwrite my_schema.target_table1 select * from my_schema.source_table1

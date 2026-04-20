@@ -1,0 +1,1 @@
+compute stats my_schema.target_table2

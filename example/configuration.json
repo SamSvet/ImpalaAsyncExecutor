@@ -1,0 +1,46 @@
+{
+  "max_async_requests_cnt": 2,
+  "max_async_mem_limit": 1048576000,
+  "timeout": 600,
+  "return_when": "ALL_COMPLETED",
+  "requests": [
+    {
+      "file": "/example/first_operation.sql",
+      "configuration": {
+        "mem_limit": "104857600",
+        "query_timeout_s": "1234",
+        "exec_time_limit_s": "300",
+        "mt_dop": "2"
+      },
+      "timeout": "310"
+    },
+    {
+      "file": "/example/second_operation.sql",
+      "configuration": {
+        "mem_limit": "104857600",
+        "query_timeout_s": "1234",
+        "exec_time_limit_s": "300"
+      },
+      "timeout": "310"
+    },
+    {
+      "file": "/example/third_operation.sql",
+      "configuration": {
+        "mem_limit": "104857600",
+        "query_timeout_s": "1234",
+        "exec_time_limit_s": "300"
+      },
+      "timeout": "310"
+    },
+    {
+      "file": "/example/fourth_operation.sql",
+      "configuration": {
+        "mem_limit": "104857600",
+        "query_timeout_s": "1234",
+        "exec_time_limit_s": "300",
+        "mt_dop": "2"
+      },
+      "timeout": "310"
+    }
+  ]
+}
