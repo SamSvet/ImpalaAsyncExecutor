@@ -92,6 +92,9 @@ async_loop = asyncio.get_event_loop()
 with open("example/configuration.json", "r") as json_config_file:
     config = json.load(json_config_file)
     impl_executor = ImpalaAsyncExecutor(config, connection_factory)
-    results = async_loop.run_until_complete(impl_executor.execute())
-    print(results)
+    # Processing of the results of SQL queries is not implied within the framework of this project.
+    # Let's print out profile information about executed queries:
+    # Query ID, Session ID, Start time, End time, Impala Query State
+    queries_profile_info = async_loop.run_until_complete(impl_executor.execute())
+    print(queries_profile_info)
 ```
