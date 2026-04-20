@@ -6,7 +6,7 @@ It is not a client or driver for the Impala database and requires the pre-instal
 Key features of `ImpalaAsyncExecutor`:
 
 - Asynchronous scripts are launched using the proven [asyncio](https://docs.python.org/3/library/asyncio.html) library within a single process and thread.
-- Because of built in connection pool (based on / inspired by [aiosqlitepool](https://github.com/slaily/aiosqlitepool/tree/main))there is no repeated opening and closing database connection.
+- Because of built-in connection pool (based on / inspired by [aiosqlitepool](https://github.com/slaily/aiosqlitepool/tree/main))there is no repeated opening and closing database connection.
 - Only DML and DDL operations are supported. Running impala scripts does not involve reading data from the execution result.
 - The launch configuration supports several conditions for returning the results of running SQL scripts. There is also control over the maximum number of queries simultaneously executed in the database.
 
@@ -57,8 +57,11 @@ It should satisfy the following json schema:
 ```
 
 **`max_async_requests_cnt`** (int) - Maximum number of requests executed simultaneously.
+
 **`max_async_mem_limit`** (int) - Limit on the total amount of memory (mem_limit option) of simultaneously executed queries.
+
 **`timeout`** (int) - Timeout in seconds for all asynchronous requests. After the timeout, all outstanding requests will be cancelled/closed.
+
 **`return_when`** (str) - Conditions for returning the results of running SQL scripts. There are 4 modes of waiting for results(3 standard asyncio wait return_when options + 1 custom):
 
 1. ALL_COMPLETED - Returns when all tasks are finished.
@@ -76,6 +79,7 @@ It should satisfy the following json schema:
 
 ```python
 import asyncio
+import json
 from impala.dbapi import connect
 from impala_async_executor import ImpalaAsyncExecutor
 
@@ -86,7 +90,7 @@ def connection_factory():
 
 async_loop = asyncio.get_event_loop()
 with open("example/configuration.json", "r") as json_config_file:
-    config = json_config_file.read()
+    config = json.load(json_config_file)
     impl_executor = ImpalaAsyncExecutor(config, connection_factory)
     results = async_loop.run_until_complete(impl_executor.execute())
     print(results)
