@@ -89,7 +89,7 @@ def connection_factory():
     return my_con, my_cur
 
 async_loop = asyncio.get_event_loop()
-with open([`example/configuration.json`](example/configuration.json), "r") as json_config_file:
+with open("example/configuration.json", "r") as json_config_file:
     config = json.load(json_config_file)
     impl_executor = ImpalaAsyncExecutor(config, connection_factory)
     results = async_loop.run_until_complete(impl_executor.execute())
