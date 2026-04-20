@@ -1,4 +1,4 @@
-# ImpalaAsynExecutor
+# ImpalaAsyncExecutor
 
 `ImpalaAsyncExecutor` is a wrapper for running asynchronous Impala scripts that are independent of each other's execution sequence and results (e.g. batch of drop table operations).
 It is not a client or driver for the Impala database and requires the pre-installed [impyla](https://github.com/cloudera/impyla) module. Supports python version starting from 3.6.
